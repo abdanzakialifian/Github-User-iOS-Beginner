@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="GithubUser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rIR-Wm-xzw">
+                                <rect key="frame" x="0.0" y="105" width="393" height="713"/>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="R5N-mh-fQl">
+                                <rect key="frame" x="156.66666666666666" y="386" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="40D-Gu-0hp"/>
+                                    <constraint firstAttribute="height" constant="80" id="s7C-Ro-9ac"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNP-M8-nPe">
+                                <rect key="frame" x="131.33333333333331" y="414" width="130.33333333333331" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Users" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rho-NM-9oT">
+                                <rect key="frame" x="16" y="59" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="R5N-mh-fQl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1eo-ic-iY9"/>
+                            <constraint firstItem="rho-NM-9oT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1qA-3u-3dT"/>
+                            <constraint firstItem="rIR-Wm-xzw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="20K-KM-E3H"/>
+                            <constraint firstItem="rIR-Wm-xzw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8OR-zU-wcf"/>
+                            <constraint firstItem="CNP-M8-nPe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KC5-sa-WHL"/>
+                            <constraint firstItem="rho-NM-9oT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="TNP-dw-f7U"/>
+                            <constraint firstItem="CNP-M8-nPe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="Uri-2t-D37"/>
+                            <constraint firstItem="rIR-Wm-xzw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xhx-Qu-ln9"/>
+                            <constraint firstItem="rIR-Wm-xzw" firstAttribute="top" secondItem="rho-NM-9oT" secondAttribute="bottom" constant="12" id="aoG-HO-4PL"/>
+                            <constraint firstItem="R5N-mh-fQl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mc2-Be-0es"/>
+                            <constraint firstItem="CNP-M8-nPe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qC3-a6-g1p"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rho-NM-9oT" secondAttribute="trailing" constant="16" id="qb6-J9-km9"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="CNP-M8-nPe" secondAttribute="trailing" constant="12" id="vQ0-LD-Ksg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="R5N-mh-fQl" id="zS0-yI-eYZ"/>
+                        <outlet property="errorMessageLabel" destination="CNP-M8-nPe" id="Xev-sP-xtG"/>
+                        <outlet property="searchTextField" destination="rho-NM-9oT" id="hTE-nA-lrR"/>
+                        <outlet property="userTableView" destination="rIR-Wm-xzw" id="6lU-Eu-U7a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="122.90076335877862" y="-2.1126760563380285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

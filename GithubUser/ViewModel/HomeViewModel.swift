@@ -12,12 +12,25 @@ import Alamofire
 class HomeViewModel : ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     
+    @Published private var query: String = ""
+    
     @Published var uiState: UiState = UiState.success([ListUsers]())
     
-    func getListUsers() {
+    @Published var queryDebounce: String = ""
+    
+    func performSearch(query: String) {
+        self.query = query
+        
+        $query
+            .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
+            .assign(to: \.queryDebounce, on: self)
+            .store(in: &cancellables)
+    }
+    
+    func getListUsers(query: String) {
         self.uiState = .loading
         
-        GithubRepositoryImpl.shared.getListUsers()
+        GithubRepositoryImpl.shared.getListUsers(query: query)
             .sink(
                 receiveCompletion: { completion in
                     if case .failure(let error) = completion {

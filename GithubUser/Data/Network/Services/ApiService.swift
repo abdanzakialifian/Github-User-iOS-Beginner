@@ -33,8 +33,8 @@ class ApiService {
     
     let baseUrl = "https://api.github.com/"
     
-    func get<T: Decodable>(_ endPointUrl: String, model: T.Type) -> AnyPublisher<T, AFError> {
-        return sessionManager.request(baseUrl.appending(endPointUrl), method: .get)
+    func get<T: Decodable>(_ endPointUrl: String, model: T.Type, parameters: Parameters = [:] as [String : Any]) -> AnyPublisher<T, AFError> {
+        return sessionManager.request(baseUrl.appending(endPointUrl), method: .get, parameters: parameters)
             .validate()
             .publishDecodable(type: model)
             .value()

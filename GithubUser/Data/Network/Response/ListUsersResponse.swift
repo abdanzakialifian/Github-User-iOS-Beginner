@@ -7,7 +7,19 @@
 
 import Foundation
 
-struct ListUsersResponse: Codable {
+struct ListUserResponse: Codable {
+    let totalCount: Int?
+    let incompleteResults: Bool?
+    let items: [UserItemResponse]?
+
+    enum CodingKeys: String, CodingKey {
+        case totalCount = "total_count"
+        case incompleteResults = "incomplete_results"
+        case items = "items"
+    }
+}
+
+struct UserItemResponse: Codable {
     let login: String?
     let id: Int?
     let nodeID: String?

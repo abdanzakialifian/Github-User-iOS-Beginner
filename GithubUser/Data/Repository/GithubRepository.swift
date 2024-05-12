@@ -10,5 +10,5 @@ import Combine
 import Alamofire
 
 protocol GithubRepository {
-    func getListUsers() -> AnyPublisher<[ListUsers], AFError>
+    func getListUsers(query: String) -> AnyPublisher<[ListUsers], AFError>
 }
