@@ -12,4 +12,5 @@ class EndPoint {
     static let shared = EndPoint()
     
     let searchUsers = "search/users"
+    let detailUser = "users/{username}"
 }

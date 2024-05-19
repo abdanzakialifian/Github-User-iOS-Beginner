@@ -34,4 +34,19 @@ class GithubRepositoryImpl : GithubRepository {
             }
             .eraseToAnyPublisher()
     }
+    
+    func getDetailUser(username: String) -> AnyPublisher<DetailUser, AFError> {
+        return apiService.get(endPoint.detailUser.replacingOccurrences(of: "{username}", with: username), model: DetailUserResponse.self)
+            .map { detailUserResponse in
+                return DetailUser(
+                    avatarURL: detailUserResponse.avatarURL,
+                    followers: detailUserResponse.followers,
+                    following: detailUserResponse.following,
+                    publicRepos: detailUserResponse.publicRepos,
+                    login: detailUserResponse.login,
+                    name: detailUserResponse.name
+                )
+            }
+            .eraseToAnyPublisher()
+    }
 }

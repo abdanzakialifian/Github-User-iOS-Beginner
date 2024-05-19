@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class HomeViewController: UIViewController, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -28,6 +28,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         
         self.userTableView.dataSource = self
+        self.userTableView.delegate = self
         
         self.initTableViewCell()
         
@@ -73,10 +74,10 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     private func initTableViewCell() {
         userTableView.register(
             UINib(
-                nibName: "UserTableViewCell",
+                nibName: Constant.shared.userTableViewCell,
                 bundle: nil
             ),
-            forCellReuseIdentifier: "UserCell"
+            forCellReuseIdentifier: Constant.shared.userCellId
         )
     }
     
@@ -96,7 +97,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constant.shared.userCellId, for: indexPath) as? UserTableViewCell {
             let user = self.users[indexPath.row]
             cell.userImageView.downloaded(from: user.avatarURL ?? "")
             cell.usernameLabel.text = user.login
@@ -104,6 +105,18 @@ class HomeViewController: UIViewController, UITableViewDataSource {
             return cell
         } else {
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constant.shared.goToDetailScreen, sender: users[indexPath.row].login)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constant.shared.goToDetailScreen{
+            if let detailViewController = segue.destination as? DetailViewController {
+                detailViewController.userName = sender as? String
+            }
         }
     }
     
