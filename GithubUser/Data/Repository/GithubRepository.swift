@@ -12,4 +12,6 @@ import Alamofire
 protocol GithubRepository {
     func getListUsers(query: String) -> AnyPublisher<[ListUsers], AFError>
     func getDetailUser(username: String) -> AnyPublisher<DetailUser, AFError>
+    func getFollowerUsers(username: String) -> AnyPublisher<[ListUsers], AFError>
+    func getFollowingUsers(username: String) -> AnyPublisher<[ListUsers], AFError>
 }

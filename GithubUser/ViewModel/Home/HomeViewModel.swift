@@ -14,7 +14,7 @@ class HomeViewModel : ObservableObject {
     
     @Published private var query: String = ""
     
-    @Published var uiState: UiState = UiState.success([ListUsers]())
+    @Published var uiState: UiState<[ListUsers]> = UiState.loading
     
     @Published var queryDebounce: String = ""
     

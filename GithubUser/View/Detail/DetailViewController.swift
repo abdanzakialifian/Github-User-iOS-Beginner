@@ -24,6 +24,12 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     
+    @IBOutlet weak var followersContainerView: UIView!
+    
+    @IBOutlet weak var followingContainerView: UIView!
+    
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
     private var cancellables: Set<AnyCancellable> = []
     
     private let viewModel = DetailViewModel()
@@ -36,6 +42,12 @@ class DetailViewController: UIViewController {
         viewModel.getDetailUser(username: userName ?? "")
         
         collectData()
+        
+        showHideViewController(segment: segmentControl)
+    }
+    
+    @IBAction func didTapSegment(segment: UISegmentedControl) {
+        showHideViewController(segment: segment)
     }
     
     private func collectData() {
@@ -53,11 +65,21 @@ class DetailViewController: UIViewController {
                     self.userNameLabel.text = detailUser.login
                     self.nameLabel.text = detailUser.name
                     self.userImageView.layer.cornerRadius = 6
-                case .error(let error):
+                case .error(_):
                     self.activityIndicator.isHidden = true
                 }
             }
         ).store(in: &cancellables)
+    }
+    
+    private func showHideViewController(segment: UISegmentedControl) {
+        if segment.selectedSegmentIndex == 0 {
+            followersContainerView.isHidden = false
+            followingContainerView.isHidden = true
+        } else {
+            followersContainerView.isHidden = true
+            followingContainerView.isHidden = false
+        }
     }
     
     deinit {

@@ -13,4 +13,6 @@ class EndPoint {
     
     let searchUsers = "search/users"
     let detailUser = "users/{username}"
+    let followersUser = "users/{username}/followers"
+    let followingUser = "users/{username}/following"
 }

@@ -49,4 +49,33 @@ class GithubRepositoryImpl : GithubRepository {
             }
             .eraseToAnyPublisher()
     }
+    
+    func getFollowerUsers(username: String) -> AnyPublisher<[ListUsers], Alamofire.AFError> {
+        return apiService.get(endPoint.followersUser.replacingOccurrences(of: "{username}", with: username), model: [FollowerUsersResponse].self)
+            .map { listFollowerResponse in
+                return listFollowerResponse.map { userItemResponse in
+                    ListUsers(
+                        login: userItemResponse.login,
+                        id: userItemResponse.id,
+                        avatarURL: userItemResponse.avatarURL
+                    )
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func getFollowingUsers(username: String) -> AnyPublisher<[ListUsers], Alamofire.AFError> {
+        return apiService.get(endPoint.followingUser.replacingOccurrences(of: "{username}", with: username), model: [FollowerUsersResponse].self)
+            .map { listFollowerResponse in
+                return listFollowerResponse.map { userItemResponse in
+                    ListUsers(
+                        login: userItemResponse.login,
+                        id: userItemResponse.id,
+                        avatarURL: userItemResponse.avatarURL
+                    )
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+    
 }
