@@ -18,6 +18,8 @@
 		96ACA1992BFA0CE3002FF9FF /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACA1982BFA0CE3002FF9FF /* FollowersViewController.swift */; };
 		96ACA19B2BFA187A002FF9FF /* FollowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACA19A2BFA187A002FF9FF /* FollowingViewController.swift */; };
 		96ACA1A12BFA7D4B002FF9FF /* FollowerUsersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACA1A02BFA7D4B002FF9FF /* FollowerUsersResponse.swift */; };
+		96ACA1A92BFBACEE002FF9FF /* FollowersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ACA1A72BFBACEE002FF9FF /* FollowersTableViewCell.swift */; };
+		96ACA1AA2BFBACEE002FF9FF /* FollowersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96ACA1A82BFBACEE002FF9FF /* FollowersTableViewCell.xib */; };
 		96B512F62BEF7034002C3354 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B512F52BEF7034002C3354 /* EndPoint.swift */; };
 		96B512F92BEF7355002C3354 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B512F72BEF7355002C3354 /* UserTableViewCell.swift */; };
 		96B512FA2BEF7355002C3354 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96B512F82BEF7355002C3354 /* UserTableViewCell.xib */; };
@@ -48,6 +50,8 @@
 		96ACA1982BFA0CE3002FF9FF /* FollowersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewController.swift; sourceTree = "<group>"; };
 		96ACA19A2BFA187A002FF9FF /* FollowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingViewController.swift; sourceTree = "<group>"; };
 		96ACA1A02BFA7D4B002FF9FF /* FollowerUsersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerUsersResponse.swift; sourceTree = "<group>"; };
+		96ACA1A72BFBACEE002FF9FF /* FollowersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersTableViewCell.swift; sourceTree = "<group>"; };
+		96ACA1A82BFBACEE002FF9FF /* FollowersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowersTableViewCell.xib; sourceTree = "<group>"; };
 		96B512F52BEF7034002C3354 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		96B512F72BEF7355002C3354 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		96B512F82BEF7355002C3354 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
@@ -125,6 +129,17 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		96ACA1A22BFADD70002FF9FF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				96B512F72BEF7355002C3354 /* UserTableViewCell.swift */,
+				96B512F82BEF7355002C3354 /* UserTableViewCell.xib */,
+				96ACA1A72BFBACEE002FF9FF /* FollowersTableViewCell.swift */,
+				96ACA1A82BFBACEE002FF9FF /* FollowersTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		96D22C042BEEB1F600F7C3E6 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +159,7 @@
 		96D22C0F2BEEB1F600F7C3E6 /* GithubUser */ = {
 			isa = PBXGroup;
 			children = (
+				96ACA1A22BFADD70002FF9FF /* Cell */,
 				96D22C412BEF3AED00F7C3E6 /* Storyboard */,
 				96D22C3F2BEF3A9100F7C3E6 /* Model */,
 				96D22C3E2BEF3A7900F7C3E6 /* Common */,
@@ -154,8 +170,6 @@
 				96D22C122BEEB1F600F7C3E6 /* SceneDelegate.swift */,
 				96D22C192BEEB1F800F7C3E6 /* Assets.xcassets */,
 				96D22C1E2BEEB1F800F7C3E6 /* Info.plist */,
-				96B512F72BEF7355002C3354 /* UserTableViewCell.swift */,
-				96B512F82BEF7355002C3354 /* UserTableViewCell.xib */,
 			);
 			path = GithubUser;
 			sourceTree = "<group>";
@@ -323,6 +337,7 @@
 				96D22C1A2BEEB1F800F7C3E6 /* Assets.xcassets in Resources */,
 				96D22C1D2BEEB1F800F7C3E6 /* Base in Resources */,
 				96D22C182BEEB1F600F7C3E6 /* Base in Resources */,
+				96ACA1AA2BFBACEE002FF9FF /* FollowersTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +371,7 @@
 				96D22C2A2BEEB76400F7C3E6 /* ListUsersResponse.swift in Sources */,
 				96D22C432BEF3DDE00F7C3E6 /* NetworkLogger.swift in Sources */,
 				96ACA16C2BF92D4F002FF9FF /* DetailUserResponse.swift in Sources */,
+				96ACA1A92BFBACEE002FF9FF /* FollowersTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

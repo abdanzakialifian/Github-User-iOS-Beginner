@@ -82,6 +82,16 @@ class DetailViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let followersViewController = segue.destination as? FollowersViewController {
+            followersViewController.userName = userName
+        }
+        
+        if let followingViewController = segue.destination as? FollowingViewController {
+            followingViewController.userName = userName
+        }
+    }
+    
     deinit {
         cancellables.forEach {
             $0.cancel()

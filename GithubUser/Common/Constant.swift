@@ -13,5 +13,7 @@ class Constant {
     
     let userTableViewCell = "UserTableViewCell"
     let userCellId = "UserCell"
-    let goToDetailScreen = "goToDetailScreen"
+    let followersTableViewCell = "FollowersTableViewCell"
+    let followersCellId = "FollowersCell"
+    let detailViewController = "detailViewController"
 }

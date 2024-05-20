@@ -62,7 +62,7 @@
                         <outlet property="errorMessageLabel" destination="CNP-M8-nPe" id="Xev-sP-xtG"/>
                         <outlet property="searchTextField" destination="rho-NM-9oT" id="hTE-nA-lrR"/>
                         <outlet property="userTableView" destination="rIR-Wm-xzw" id="6lU-Eu-U7a"/>
-                        <segue destination="Nhz-mG-eXw" kind="show" identifier="goToDetailScreen" id="kjq-uB-ovp"/>
+                        <segue destination="Nhz-mG-eXw" kind="show" identifier="detailViewController" id="kjq-uB-ovp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -193,25 +193,26 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqC-Wk-kXK" userLabel="Followers Container View">
                                 <rect key="frame" x="0.0" y="298" width="393" height="471"/>
                                 <connections>
-                                    <segue destination="iuY-vw-l2f" kind="embed" identifier="" id="AE6-03-fvD"/>
+                                    <segue destination="iuY-vw-l2f" kind="embed" identifier="followingViewController" id="AE6-03-fvD"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iss-0V-fvP" userLabel="Following Container View">
                                 <rect key="frame" x="0.0" y="298" width="393" height="471"/>
                                 <connections>
-                                    <segue destination="cem-lx-6X3" kind="embed" id="Uoe-k3-yfA"/>
+                                    <segue destination="cem-lx-6X3" kind="embed" identifier="followersViewController" id="Uoe-k3-yfA"/>
                                 </connections>
                             </containerView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="i9L-aC-Qpv">
-                                <rect key="frame" x="178" y="362" width="37" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="i9L-aC-Qpv">
+                                <rect key="frame" x="178" y="151" width="37" height="37"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fn8-92-tAP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="sR5-dL-nWO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i9L-aC-Qpv" secondAttribute="bottom" constant="79" id="0WB-ch-T1d"/>
                             <constraint firstItem="2cC-JK-P9S" firstAttribute="top" secondItem="fn8-92-tAP" secondAttribute="top" constant="16" id="1s7-o8-jI1"/>
                             <constraint firstItem="9E9-15-cWU" firstAttribute="top" secondItem="fn8-92-tAP" secondAttribute="top" constant="48" id="8kU-h0-QAT"/>
+                            <constraint firstItem="i9L-aC-Qpv" firstAttribute="centerX" secondItem="1kJ-cF-cSE" secondAttribute="centerX" id="AOM-vp-xpG"/>
                             <constraint firstItem="Naq-tJ-fzo" firstAttribute="top" secondItem="CZy-ur-Dem" secondAttribute="bottom" constant="8" id="Ab5-XV-51Q"/>
                             <constraint firstItem="sR5-dL-nWO" firstAttribute="top" secondItem="knY-2u-yZw" secondAttribute="bottom" constant="16" id="Ay2-NT-WzH"/>
                             <constraint firstItem="Naq-tJ-fzo" firstAttribute="top" secondItem="fn8-92-tAP" secondAttribute="top" constant="76" id="Cyk-NW-86q"/>
@@ -234,6 +235,7 @@
                             <constraint firstItem="iss-0V-fvP" firstAttribute="leading" secondItem="fn8-92-tAP" secondAttribute="leading" id="boK-U1-7jp"/>
                             <constraint firstItem="Naq-tJ-fzo" firstAttribute="leading" relation="lessThanOrEqual" secondItem="e5H-95-4TS" secondAttribute="trailing" constant="16" id="dEm-el-qDT"/>
                             <constraint firstItem="iss-0V-fvP" firstAttribute="top" secondItem="sR5-dL-nWO" secondAttribute="bottom" id="fdA-AG-ffo"/>
+                            <constraint firstItem="i9L-aC-Qpv" firstAttribute="top" secondItem="fn8-92-tAP" secondAttribute="top" constant="48" id="hbY-J0-pCh"/>
                             <constraint firstItem="fn8-92-tAP" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="rRr-bs-NgI" secondAttribute="trailing" constant="302" id="iKM-YB-5bj"/>
                             <constraint firstItem="oi6-9h-nxX" firstAttribute="top" secondItem="fn8-92-tAP" secondAttribute="top" constant="48" id="iuk-6N-Wqh"/>
                             <constraint firstItem="CZy-ur-Dem" firstAttribute="centerX" secondItem="Naq-tJ-fzo" secondAttribute="centerX" id="jk8-MK-NFO"/>
@@ -306,24 +308,43 @@
         <!--Followers View Controller-->
         <scene sceneID="C7q-bj-s68">
             <objects>
-                <viewController id="iuY-vw-l2f" customClass="FollowersViewController" customModule="GithubUser" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FollowersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iuY-vw-l2f" customClass="FollowersViewController" customModule="GithubUser" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H5L-fJ-9MN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="471"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1z-qG-Cd2">
-                                <rect key="frame" x="160.66666666666666" y="225" width="72" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="M1d-Su-MF7" userLabel="Followers Table View">
+                                <rect key="frame" x="16" y="59" width="361" height="378"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8s-C2-G4j">
+                                <rect key="frame" x="32" y="223.66666666666666" width="329" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="mhZ-8M-hYA" userLabel="Activity Indicator">
+                                <rect key="frame" x="178" y="217" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="y1z-qG-Cd2" firstAttribute="centerX" secondItem="H5L-fJ-9MN" secondAttribute="centerX" id="UTB-rn-8tK"/>
-                            <constraint firstItem="y1z-qG-Cd2" firstAttribute="centerY" secondItem="H5L-fJ-9MN" secondAttribute="centerY" id="cd1-8k-Bhf"/>
+                            <constraint firstItem="mhZ-8M-hYA" firstAttribute="centerX" secondItem="H5L-fJ-9MN" secondAttribute="centerX" id="0SX-oz-cJy"/>
+                            <constraint firstItem="mhZ-8M-hYA" firstAttribute="centerY" secondItem="H5L-fJ-9MN" secondAttribute="centerY" id="IgB-0u-8VZ"/>
+                            <constraint firstItem="M1d-Su-MF7" firstAttribute="top" secondItem="H5L-fJ-9MN" secondAttribute="topMargin" id="Px3-Uh-mHQ"/>
+                            <constraint firstItem="X8s-C2-G4j" firstAttribute="centerY" secondItem="H5L-fJ-9MN" secondAttribute="centerY" id="cFH-u9-WVt"/>
+                            <constraint firstItem="M1d-Su-MF7" firstAttribute="leading" secondItem="H5L-fJ-9MN" secondAttribute="leadingMargin" id="f4F-w2-2q0"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="M1d-Su-MF7" secondAttribute="bottom" id="nYR-Pc-LlE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="X8s-C2-G4j" secondAttribute="trailing" constant="16" id="r4r-UK-Iwr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M1d-Su-MF7" secondAttribute="trailing" id="sNh-00-9W6"/>
+                            <constraint firstItem="X8s-C2-G4j" firstAttribute="leading" secondItem="H5L-fJ-9MN" secondAttribute="leadingMargin" constant="16" id="tkD-Ae-5sL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="mhZ-8M-hYA" id="Zna-5O-ImL"/>
+                        <outlet property="errorMessageLabel" destination="X8s-C2-G4j" id="tuO-xV-JcZ"/>
+                        <outlet property="followersTableView" destination="M1d-Su-MF7" id="Zey-EJ-4Yn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNG-NK-pum" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -337,19 +358,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="471"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J16-1l-e8s">
-                                <rect key="frame" x="160.66666666666666" y="225" width="72" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fQq-Qf-z7N" userLabel="Following Table View">
+                                <rect key="frame" x="16" y="59" width="361" height="378"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogs-fA-MAy" userLabel="Error Message Label">
+                                <rect key="frame" x="131.33333333333331" y="223.66666666666666" width="130.33333333333331" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="MMd-vU-jV6" userLabel="Activity Indicator">
+                                <rect key="frame" x="178" y="217" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="J16-1l-e8s" firstAttribute="centerY" secondItem="isB-oj-bqt" secondAttribute="centerY" id="NnM-H2-pEC"/>
-                            <constraint firstItem="J16-1l-e8s" firstAttribute="centerX" secondItem="isB-oj-bqt" secondAttribute="centerX" id="cuF-qh-lh6"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="fQq-Qf-z7N" secondAttribute="bottom" id="CQR-qb-zL0"/>
+                            <constraint firstItem="MMd-vU-jV6" firstAttribute="centerX" secondItem="isB-oj-bqt" secondAttribute="centerX" id="J4B-Mc-jEC"/>
+                            <constraint firstItem="fQq-Qf-z7N" firstAttribute="leading" secondItem="isB-oj-bqt" secondAttribute="leadingMargin" id="L5l-PK-6iq"/>
+                            <constraint firstItem="fQq-Qf-z7N" firstAttribute="top" secondItem="isB-oj-bqt" secondAttribute="topMargin" id="XQ6-ib-zaC"/>
+                            <constraint firstItem="ogs-fA-MAy" firstAttribute="centerX" secondItem="isB-oj-bqt" secondAttribute="centerX" id="bpc-gu-zac"/>
+                            <constraint firstItem="MMd-vU-jV6" firstAttribute="centerY" secondItem="isB-oj-bqt" secondAttribute="centerY" id="d9K-TU-7Uz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fQq-Qf-z7N" secondAttribute="trailing" id="nXI-tS-FRy"/>
+                            <constraint firstItem="ogs-fA-MAy" firstAttribute="centerY" secondItem="isB-oj-bqt" secondAttribute="centerY" id="yBb-HR-2Nq"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="MMd-vU-jV6" id="4f9-7L-PHD"/>
+                        <outlet property="errorMessageLabel" destination="ogs-fA-MAy" id="bgM-BU-x7S"/>
+                        <outlet property="followingTableView" destination="fQq-Qf-z7N" id="GY1-Xr-J6I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8rn-vf-e5M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

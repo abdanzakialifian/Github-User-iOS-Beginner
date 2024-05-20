@@ -34,13 +34,9 @@ class DetailViewModel : ObservableObject {
                 }
             )
             .store(in: &cancellables)
-        
-        getFollowerUsers(username: username)
-        
-        getFollowingUsers(username: username)
     }
     
-    private func getFollowerUsers(username: String) {
+    func getFollowerUsers(username: String) {
         self.uiStateFollowers = .loading
         
         GithubRepositoryImpl.shared.getFollowerUsers(username: username)
@@ -57,7 +53,7 @@ class DetailViewModel : ObservableObject {
             .store(in: &cancellables)
     }
     
-    private func getFollowingUsers(username: String) {
+    func getFollowingUsers(username: String) {
         self.uiStateFollowing = .loading
         
         GithubRepositoryImpl.shared.getFollowingUsers(username: username)

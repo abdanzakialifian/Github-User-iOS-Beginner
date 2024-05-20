@@ -109,11 +109,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Constant.shared.goToDetailScreen, sender: users[indexPath.row].login)
+        performSegue(withIdentifier: Constant.shared.detailViewController, sender: users[indexPath.row].login)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constant.shared.goToDetailScreen{
+        if segue.identifier == Constant.shared.detailViewController{
             if let detailViewController = segue.destination as? DetailViewController {
                 detailViewController.userName = sender as? String
             }
